@@ -31,7 +31,7 @@
     <script>
         async function carregarDados() {
             try {
-                const resposta = await fetch('https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/dados.json');
+                const resposta = await fetch('https://raw.githubusercontent.com/daniskubs/relato/main/dados.json');
                 const dados = await resposta.json();
                 
                 document.getElementById('resumo').textContent = dados.resumo;

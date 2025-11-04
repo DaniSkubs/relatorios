@@ -1,33 +1,142 @@
-.dts{
-
-    width: 115px !important;
-
-}
-
-.tentativas{
-
-    width: 60px !important;
-}
-
+/* Estilos Gerais para a Tela */
 body {
-    min-width: 700px;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
 }
 
-.table-sm td,
-.table-sm th {
-padding-top: 0.0rem;
-padding-bottom: 0.0rem;
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-p {
-    margin-bottom: 8px;
-
-
+/* Estilos do Formulário */
+#form-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
 }
 
-.espacamento_simples {
-    margin-bottom: 8px;
-    font-size: 14.5px;
-    line-height: 17px;
+.form-group {
+    margin-bottom: 15px;
+}
 
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura total */
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos da Área de Relatório (para visualização na tela) */
+#relatorio-final {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px dashed #007bff;
+}
+
+.instrucao {
+    text-align: center;
+    color: #888;
+}
+
+/* Estilos do Relatório Formatado */
+.cabecalho-relatorio h1 {
+    text-align: center;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.secao-relatorio h2 {
+    color: #007bff;
+    margin-top: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.secao-relatorio ul {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+.secao-relatorio li {
+    margin-bottom: 5px;
+}
+
+.assinatura {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.botoes-relatorio {
+    text-align: center;
+}
+
+/* ----------------------------------------------------- */
+/* MAGIC: Estilos ESPECÍFICOS para a IMPRESSÃO (@media print) */
+/* ----------------------------------------------------- */
+@media print {
+    /* 1. Oculta o formulário de preenchimento e os botões de controle do relatório */
+    #form-container,
+    .botoes-relatorio {
+        display: none !important;
+    }
+
+    /* 2. Remove o fundo e sombras, e garante que o relatório ocupe a página toda */
+    body, main {
+        background-color: white;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* 3. Estilos de impressão para o relatório (garantindo boa legibilidade) */
+    .cabecalho-relatorio h1 {
+        color: black; /* Evita cores desnecessárias na impressão */
+        border-bottom-color: #ccc;
+    }
+
+    .secao-relatorio h2 {
+        color: #555; /* Cor um pouco mais escura para títulos */
+    }
+
+    .secao-relatorio ul {
+        list-style: disc;
+    }
+
+    /* Evita quebras de página dentro de listas ou seções importantes */
+    .secao-relatorio {
+        page-break-inside: avoid;
+    }
 }

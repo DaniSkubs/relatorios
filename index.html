@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatório Institucional Personalizado</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
 
+    <main>
+        <section id="form-container">
+            <h1>📝 Preenchimento do Relatório Institucional</h1>
+            
+            <form id="relatorioForm">
+                
+                <div class="form-group">
+                    <label for="instituicao">Nome da Instituição:</label>
+                    <input type="text" id="instituicao" value="Minha Instituição de Ensino" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="periodo">Período de Avaliação (Ex: 2024/1):</label>
+                    <input type="text" id="periodo" value="2024 - 2º Semestre" required>
+                </div>
+                
+                <h2>Dados da Avaliação</h2>
+
+                <div class="form-group">
+                    <label for="metodologia">Metodologia e Procedimentos Utilizados:</label>
+                    <textarea id="metodologia" rows="5" required>Entrevistas com a gestão e corpo docente, aplicação de questionários para discentes e análise documental (PPC, PDI).</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pontos-fortes">Principais Pontos Fortes (Liste um por linha):</label>
+                    <textarea id="pontos-fortes" rows="7" required>Qualidade do corpo docente
+Infraestrutura moderna e adequada
+Alto índice de empregabilidade dos egressos</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pontos-fracos">Principais Pontos Fracos/Desafios (Liste um por linha):</label>
+                    <textarea id="pontos-fracos" rows="7" required>Necessidade de modernização do acervo bibliográfico
+Baixa participação dos alunos nas atividades complementares
+Comunicação interna ineficaz</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="sugestoes">Recomendações e Sugestões de Melhoria (Liste um por linha):</label>
+                    <textarea id="sugestoes" rows="7" required>Investir na aquisição de e-books.
+Criar um programa de incentivo à participação discente.
+Implementar uma nova plataforma de comunicação interna.</textarea>
+                </div>
+
+                <button type="button" id="gerarRelatorioBtn">Gerar Relatório</button>
+                
+            </form>
+        </section>
+        
+        <section id="relatorio-final">
+            <div id="relatorio-pronto">
+                <p class="instrucao">Preencha os dados e clique em "Gerar Relatório".</p>
+            </div>
+
+            <div class="botoes-relatorio">
+                <button id="imprimirRelatorioBtn" style="display: none;">Imprimir</button>
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="script.js"></script> 
+</body>
+</html>

@@ -52,6 +52,7 @@ main.container {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+    font-size: 11pt; /* Fonte do rótulo do campo */
 }
 
 .linha-flex {
@@ -60,7 +61,7 @@ main.container {
     margin-bottom: 15px;
 }
 
-.campo-metade {
+.campo-terco {
     flex: 1;
 }
 
@@ -76,43 +77,87 @@ input.form-control, textarea.form-control, select.form-control {
     font-family: 'Times New Roman', Times, serif; 
     font-size: 12pt;
     line-height: 1.5;
-    padding: 10px; /* Adiciona algum padding interno */
+    padding: 10px; 
 }
 .relato-final p {
-    text-align: justify;
+    text-align: justify; /* Justifica o texto, como no seu modelo */
     margin-bottom: 12px;
+}
+.relato-final h1 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 .relato-final h2 {
     font-size: 13pt;
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 10px;
+    text-decoration: underline; /* Sublinha os títulos das seções */
 }
-
+.relato-final h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+.relato-final ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+.relato-final ul li {
+    margin-bottom: 5px;
+}
 
 /* Estilos para a Tabela de Cabeçalho do Relatório Final */
 #relatorio-pronto .tabela-cabecalho table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    font-size: 11pt;
 }
 #relatorio-pronto .tabela-cabecalho td {
     border: 1px solid #000;
     padding: 4px;
-    font-size: 11pt;
+}
+#relatorio-pronto .tabela-cabecalho tr td:first-child {
+    font-weight: bold;
+    width: 150px;
+    background-color: #f0f0f0;
 }
 
-/* --- Mídia de Impressão (Mantendo o que funciona) --- */
+/* Assinatura */
+.assinatura-final {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/* --- Mídia de Impressão --- */
 @media print {
+    /* Esconde o formulário e os botões na impressão */
     #form-container,
-    .botoes-relatorio {
+    .btn, 
+    .botoes-relatorio,
+    hr,
+    .box-dados {
         display: none !important;
     }
+    
+    /* Ajusta a página para impressão */
     body, main {
         background-color: white;
         box-shadow: none;
         margin: 0;
         padding: 50px 70px;
         width: 100%;
+        max-width: none;
+    }
+    
+    .relato-final {
+        padding: 0;
     }
 }

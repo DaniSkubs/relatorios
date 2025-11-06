@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Garante que o botão existe e é capturado
     const gerarBtn = document.getElementById('gerarRelatorioBtn');
     const imprimirBtn = document.getElementById('imprimirRelatorioBtn');
     const relatorioPronto = document.getElementById('relatorio-pronto');
     const fieldsetRelatoFinal = document.getElementById('fieldset_relato_final');
 
+    if (!gerarBtn) {
+        console.error("ERRO: O botão de gerar relatório (ID: 'gerarRelatorioBtn') não foi encontrado no HTML.");
+        return; // Sai da função se não encontrar o botão
+    }
+
     // Função para calcular a porcentagem
     function calcularPorcentagem(respondentes, total) {
-        // Garante que os inputs são tratados como números
-        const resp = parseInt(respondentes);
-        const tot = parseInt(total);
+        const resp = parseInt(respondentes) || 0;
+        const tot = parseInt(total) || 0;
         if (tot > 0) {
             return Math.round((resp / tot) * 100);
         }
@@ -18,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para converter texto (item por linha) em uma lista HTML <ul><li>
     function arrayToListHTML(text) {
         if (!text) return '<ul><li>Nenhum item registrado.</li></ul>';
-        // Divide por quebra de linha e filtra itens vazios
         const items = text.split('\n').filter(item => item.trim() !== '');
         if (items.length === 0) return '<ul><li>Nenhum item registrado.</li></ul>';
         
@@ -28,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função principal para montar o relatório
     gerarBtn.addEventListener('click', function() {
-        // --- 1. CAPTURA DOS DADOS VARIÁVEIS ---
+        // --- 1. CAPTURA DOS DADOS VARIÁVEIS (AGORA TUDO DEVE SER ENCONTRADO) ---
+        // Dados Gerais
         const avaliacaoPeriodo = document.getElementById('avaliacao-periodo').value;
         const cursoNome = document.getElementById('curso-nome').value;
         const coordenadora = document.getElementById('coordenadora').value;
+        const dataFinal = document.getElementById('data-final').value;
         
         // Seção 1: Ingressante
         const ingressantesDataPesquisa = document.getElementById('ingressantes-data-pesquisa').value;
@@ -40,27 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const ingressantesParticipacao = calcularPorcentagem(ingressantesResponderam, ingressantesTotal);
 
         const perfilFaixaGenero = document.getElementById('perfil-faixa-genero').value;
-        const perfilRenda = document.getElementById('perfil-renda').value;
-        const perfilTrabalho = document.getElementById('perfil-trabalho').value;
+        const perfilRenda = document.getElementById('perfil-renda').value; // CAMPO NOVO
+        const perfilTrabalho = document.getElementById('perfil-trabalho').value; // CAMPO NOVO
 
         // Seção 2: Avaliação Geral
-        const avaliacaoDataPesquisa = document.getElementById('avaliacao-data-pesquisa').value;
-        const alunosTotal = document.getElementById('alunos-total').value;
-        const alunosResponderam = document.getElementById('alunos-responderam').value;
+        const avaliacaoDataPesquisa = document.getElementById('avaliacao-data-pesquisa').value; // CAMPO NOVO
+        const alunosTotal = document.getElementById('alunos-total').value; // CAMPO NOVO
+        const alunosResponderam = document.getElementById('alunos-responderam').value; // CAMPO NOVO
         const alunosParticipacao = calcularPorcentagem(alunosResponderam, alunosTotal);
         
-        const professoresProblema = document.getElementById('professores-problema').value;
-        const avaliacaoCoordenacao = document.getElementById('avaliacao-coordenacao').value;
+        const professoresProblema = document.getElementById('professores-problema').value; // CAMPO NOVO
+        const avaliacaoCoordenacao = document.getElementById('avaliacao-coordenacao').value; // CAMPO NOVO
 
         // Seção 3: Listas
-        const listaPotencialidades = document.getElementById('lista-potencialidades').value;
-        const listaFragilidades = document.getElementById('lista-fragilidades').value;
-
-        // Finalização
-        const dataFinal = document.getElementById('data-final').value;
+        const listaPotencialidades = document.getElementById('lista-potencialidades').value; // CAMPO NOVO
+        const listaFragilidades = document.getElementById('lista-fragilidades').value; // CAMPO NOVO
         
-
-        // --- 2. MONTAGEM DO HTML COM O TEXTO FIXO E VARIÁVEL (Formato do seu Relatório) ---
+        // --- 2. MONTAGEM DO HTML COM O TEXTO FIXO E VARIÁVEL ---
         const relatorioHTML = `
             <div class="tabela-cabecalho">
                 <table>
@@ -156,7 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Adiciona a funcionalidade de imprimir
-    imprimirBtn.addEventListener('click', function() {
-        window.print();
-    });
+    if (imprimirBtn) {
+        imprimirBtn.addEventListener('click', function() {
+            window.print();
+        });
+    }
 });

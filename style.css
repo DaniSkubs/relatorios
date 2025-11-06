@@ -1,94 +1,118 @@
-/* Estilos Gerais para o CORPO do Documento (Web e Impressão) */
+/* --- Estilos de Base --- */
 body {
-    /* Fonte Padrão de Documentos Formais */
-    font-family: 'Times New Roman', Times, serif; 
-    font-size: 12pt;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4; /* Fundo leve para visualização web */
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 11pt;
+    background-color: #f8f8f8;
 }
-
-/* O container principal */
-main {
-    max-width: 800px; /* Largura típica de um documento A4 */
+main.container {
+    max-width: 900px;
     margin: 30px auto;
-    padding: 40px;
     background-color: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Sombra para visualização web */
+    padding: 20px;
 }
 
-/* --- ESTILOS DO FORMULÁRIO (Somente para Web) --- */
-#form-container {
-    padding: 25px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 30px;
+/* --- Estilos da Estrutura CAU (Fieldset/Legend) --- */
+.box-dados {
+    border: 1px solid #333 !important; /* Borda escura similar ao CAU */
+    padding: 15px !important;
+    margin-bottom: 25px;
 }
 
-h1 {
+.titulo-box {
+    font-weight: bold;
     font-size: 14pt;
+    width: auto; 
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 10px; /* Alinha o texto da legenda com a borda interna */
+}
+
+/* --- Estilos dos Campos de Formulário --- */
+.tabela-campos {
+    width: 100%;
+}
+.tabela-campos td {
+    padding: 5px 0;
+}
+.rotulo-campo {
     font-weight: bold;
-    text-align: center;
+    white-space: nowrap;
+    width: 150px; /* Mantém a largura fixa para alinhamento */
+    padding-right: 15px;
+}
+.rotulo-campo::after {
+    content: ":"; /* Adiciona os dois pontos no final do rótulo, como na imagem */
 }
 
-h2 {
-    font-size: 13pt;
+.bloco-campo {
+    margin-bottom: 10px;
+}
+
+.bloco-campo label {
     font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
 }
 
-input[type="text"], input[type="number"], textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+.linha-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.campo-metade {
+    flex: 1;
+}
+
+/* Estilo para Inputs/Selects/Textareas */
+input.form-control, textarea.form-control, select.form-control {
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    font-size: 11pt;
+}
+
+/* --- Estilos do Relatório Final (Para Impressão) --- */
+.relato-final {
     font-family: 'Times New Roman', Times, serif; 
     font-size: 12pt;
+    line-height: 1.5;
+    padding: 10px; /* Adiciona algum padding interno */
 }
-
-.calculo-info {
-    font-size: 10pt;
-    color: #666;
-    margin-top: 5px;
+.relato-final p {
+    text-align: justify;
+    margin-bottom: 12px;
 }
-
-button {
-    padding: 10px 15px;
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.relato-final h2 {
+    font-size: 13pt;
+    font-weight: bold;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: #003d80;
-}
 
-/* --- ESTILOS DO RELATÓRIO FINAL --- */
-
-/* Tabela de Cabeçalho */
-.tabela-cabecalho table {
+/* Estilos para a Tabela de Cabeçalho do Relatório Final */
+#relatorio-pronto .tabela-cabecalho table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-
-.tabela-cabecalho td {
+#relatorio-pronto .tabela-cabecalho td {
     border: 1px solid #000;
-    padding: 8px;
-    font-size: 11pt; /* Um pouco menor para cab
+    padding: 4px;
+    font-size: 11pt;
+}
 
+/* --- Mídia de Impressão (Mantendo o que funciona) --- */
+@media print {
+    #form-container,
+    .botoes-relatorio {
+        display: none !important;
+    }
+    body, main {
+        background-color: white;
+        box-shadow: none;
+        margin: 0;
+        padding: 50px 70px;
+        width: 100%;
+    }
+}

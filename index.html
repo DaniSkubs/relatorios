@@ -1,59 +1,81 @@
-<section id="form-container">
-    <h1>📝 Preenchimento do Relatório Parcial</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatório Institucional - Layout Avançado</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <main class="container my-4"> 
+        
+        <fieldset class="border rounded border-dark p-3 box-dados">
+            <legend class="w-auto px-1 titulo-box">Dados do Relatório</legend>
+
+            <table class="tabela-campos">
+                <tr>
+                    <td class="rotulo-campo">PERÍODO:</td>
+                    <td><input type="text" class="form-control form-control-sm" id="avaliacao-periodo" value="2024/1" required></td>
+                </tr>
+                <tr>
+                    <td class="rotulo-campo">CURSO:</td>
+                    <td><input type="text" class="form-control form-control-sm" id="curso-nome" value="ARQUITETURA E URBANISMO" required></td>
+                </tr>
+                <tr>
+                    <td class="rotulo-campo">COORDENADOR(A):</td>
+                    <td>
+                        <select class="form-control form-control-sm" id="coordenadora" required>
+                            <option value="Prof.ª Ma. Danielle Skubs">Prof.ª Ma. Danielle Skubs</option>
+                            </select>
+                    </td>
+                </tr>
+            </table>
+
+        </fieldset>
+        
+        <fieldset class="border rounded border-dark p-3 box-dados">
+            <legend class="w-auto px-1 titulo-box">1. Perfil do Ingressante</legend>
+
+            <div class="bloco-campo">
+                <label for="ingressantes-data-pesquisa">Período da Pesquisa (Ex: 26/03 a 09/04):</label>
+                <input type="text" class="form-control form-control-sm" id="ingressantes-data-pesquisa" value="26/03 a 09/04" required>
+            </div>
+            
+            <div class="linha-flex">
+                <div class="bloco-campo campo-metade">
+                    <label for="ingressantes-total">TOTAL DE INGRESSANTES:</label>
+                    <input type="number" class="form-control form-control-sm" id="ingressantes-total" value="61" required>
+                </div>
+                <div class="bloco-campo campo-metade">
+                    <label for="ingressantes-responderam">RESPONDENTES:</label>
+                    <input type="number" class="form-control form-control-sm" id="ingressantes-responderam" value="53" required>
+                </div>
+            </div>
+
+            <div class="bloco-campo">
+                <label for="perfil-faixa-genero">SÍNTESE - Faixa Etária/Gênero (Texto Corrido):</label>
+                <textarea id="perfil-faixa-genero" class="form-control form-control-sm" rows="2" required>(66%) da faixa etária entre 17 e 19 anos, maioria de mulheres (77,4%).</textarea>
+            </div>
+            
+            </fieldset>
+        
+        <button type="button" class="btn btn-primary mt-3" id="gerarRelatorioBtn">Gerar Relatório Completo</button>
+
+        <hr class="my-4">
+
+        <fieldset class="border rounded border-dark p-3" id="fieldset_relato_final" style="display:none;">
+            <legend class="w-auto px-1 titulo-box">Relato Finalizado</legend>
+            <div id="relatorio-pronto" class="relato-final">
+                <p class="instrucao">O relatório final aparecerá aqui.</p>
+            </div>
+            <div class="botoes-relatorio text-center">
+                <button id="imprimirRelatorioBtn" class="btn btn-success mt-3" type="button">Imprimir/Copiar Relatório</button>
+            </div>
+        </fieldset>
+
+    </main>
     
-    <form id="relatorioForm">
-        
-        <h2>Dados Fixos do Curso</h2>
-        <div class="form-group">
-            <label for="avaliacao-periodo">Período de Avaliação (Ex: 2024/1):</label>
-            <input type="text" id="avaliacao-periodo" value="2024/1" required>
-        </div>
-
-        <div class="form-group">
-            <label for="curso-nome">Nome do Curso:</label>
-            <input type="text" id="curso-nome" value="ARQUITETURA E URBANISMO" required>
-        </div>
-
-        <div class="form-group">
-            <label for="coordenadora">Nome da Coordenadora (Assinatura):</label>
-            <input type="text" id="coordenadora" value="Prof.ª Ma. Danielle Skubs" required>
-        </div>
-        
-        <hr>
-
-        <h2>Dados do Perfil do Ingressante</h2>
-        <div class="form-group">
-            <label for="ingressantes-total">Total de alunos ingressantes:</label>
-            <input type="number" id="ingressantes-total" value="61" required>
-        </div>
-        <div class="form-group">
-            <label for="ingressantes-responderam">Alunos que responderam ao questionário:</label>
-            <input type="number" id="ingressantes-responderam" value="53" required>
-            <p class="calculo-info">A porcentagem será calculada automaticamente.</p>
-        </div>
-
-        <hr>
-
-        <h2>Dados da Avaliação Institucional</h2>
-        <div class="form-group">
-            <label for="alunos-total">Total de alunos matriculados:</label>
-            <input type="number" id="alunos-total" value="252" required>
-        </div>
-        <div class="form-group">
-            <label for="alunos-responderam">Alunos que responderam ao questionário:</label>
-            <input type="number" id="alunos-responderam" value="208" required>
-            <p class="calculo-info">A porcentagem será calculada automaticamente.</p>
-        </div>
-        
-        <hr>
-
-        <h2>Data de Finalização do Relatório</h2>
-        <div class="form-group">
-            <label for="data-final">Data (Ex: Jundiaí, 03 de junho de 2024):</label>
-            <input type="text" id="data-final" value="Jundiaí, 04 de novembro de 2025" required>
-        </div>
-
-        <button type="button" id="gerarRelatorioBtn">Gerar Relatório Completo</button>
-        
-    </form>
-</section>
+    <script src="script.js"></script> 
+</body>
+</html>

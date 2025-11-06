@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Relatório Institucional - Layout Avançado</title>
+    <title>Gerador de Relatório Institucional - Arquitetura</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
@@ -30,36 +31,99 @@
                             </select>
                     </td>
                 </tr>
+                <tr>
+                    <td class="rotulo-campo">DATA DE FINALIZAÇÃO:</td>
+                    <td><input type="text" class="form-control form-control-sm" id="data-final" value="Jundiaí, 03 de junho de 2024" required></td>
+                </tr>
             </table>
 
         </fieldset>
         
         <fieldset class="border rounded border-dark p-3 box-dados">
             <legend class="w-auto px-1 titulo-box">1. Perfil do Ingressante</legend>
-
+            
             <div class="bloco-campo">
-                <label for="ingressantes-data-pesquisa">Período da Pesquisa (Ex: 26/03 a 09/04):</label>
+                <label for="ingressantes-data-pesquisa">1.1. Período da Pesquisa (Ex: 26/03 a 09/04):</label>
                 <input type="text" class="form-control form-control-sm" id="ingressantes-data-pesquisa" value="26/03 a 09/04" required>
             </div>
             
             <div class="linha-flex">
-                <div class="bloco-campo campo-metade">
+                <div class="bloco-campo campo-terco">
                     <label for="ingressantes-total">TOTAL DE INGRESSANTES:</label>
                     <input type="number" class="form-control form-control-sm" id="ingressantes-total" value="61" required>
                 </div>
-                <div class="bloco-campo campo-metade">
+                <div class="bloco-campo campo-terco">
                     <label for="ingressantes-responderam">RESPONDENTES:</label>
                     <input type="number" class="form-control form-control-sm" id="ingressantes-responderam" value="53" required>
                 </div>
             </div>
 
+            <label>1.2. Síntese do perfil do ingressante</label>
             <div class="bloco-campo">
-                <label for="perfil-faixa-genero">SÍNTESE - Faixa Etária/Gênero (Texto Corrido):</label>
+                <label for="perfil-faixa-genero">Faixa Etária/Gênero (Ex: (66%) da faixa etária entre 17 e 19 anos, maioria de mulheres (77,4%).)</label>
                 <textarea id="perfil-faixa-genero" class="form-control form-control-sm" rows="2" required>(66%) da faixa etária entre 17 e 19 anos, maioria de mulheres (77,4%).</textarea>
             </div>
-            
-            </fieldset>
+            <div class="bloco-campo">
+                <label for="perfil-renda">Renda Familiar (Ex: entre R$ 3.961,00 e R$ 5.280,00.)</label>
+                <input type="text" class="form-control form-control-sm" id="perfil-renda" value="entre R$ 3.961,00 e R$ 5.280,00" required>
+            </div>
+            <div class="bloco-campo">
+                <label for="perfil-trabalho">Situação de Trabalho (Ex: 40 % dos ingressantes não estão trabalhando, mas 30% trabalham em tempo integral.)</label>
+                <textarea id="perfil-trabalho" class="form-control form-control-sm" rows="2" required>40 % dos ingressantes não estão trabalhando, mas 30% trabalham em tempo integral.</textarea>
+            </div>
+
+        </fieldset>
         
+        <fieldset class="border rounded border-dark p-3 box-dados">
+            <legend class="w-auto px-1 titulo-box">2. Avaliação Institucional</legend>
+            
+            <div class="bloco-campo">
+                <label for="avaliacao-data-pesquisa">2.1. Período da Pesquisa (Ex: 26/03 a 09/04):</label>
+                <input type="text" class="form-control form-control-sm" id="avaliacao-data-pesquisa" value="26/03 a 09/04" required>
+            </div>
+            
+            <div class="linha-flex">
+                <div class="bloco-campo campo-terco">
+                    <label for="alunos-total">TOTAL DE ALUNOS (Curso):</label>
+                    <input type="number" class="form-control form-control-sm" id="alunos-total" value="400" required>
+                </div>
+                <div class="bloco-campo campo-terco">
+                    <label for="alunos-responderam">RESPONDENTES:</label>
+                    <input type="number" class="form-control form-control-sm" id="alunos-responderam" value="280" required>
+                </div>
+            </div>
+
+            <label>2.4. Discente avaliando Docente</label>
+            <div class="bloco-campo">
+                <label for="professores-problema">Pontos a Destacar (Ex: Um professor em específico recebeu algumas avaliações ruins e será tratado de forma individualizada.)</label>
+                <textarea id="professores-problema" class="form-control form-control-sm" rows="2" required>Um professor em específico recebeu algumas avaliações ruins e será tratado de forma individualizada.</textarea>
+            </div>
+            
+            <label>2.5. Docente avaliando Coordenação</label>
+            <div class="bloco-campo">
+                <label for="avaliacao-coordenacao">Avaliação da Coordenação (Ex: 90% dos docentes avaliaram a coordenação como excelente ou boa)</label>
+                <textarea id="avaliacao-coordenacao" class="form-control form-control-sm" rows="2" required>90% dos docentes avaliaram a coordenação como excelente ou boa</textarea>
+            </div>
+
+        </fieldset>
+
+        <fieldset class="border rounded border-dark p-3 box-dados">
+            <legend class="w-auto px-1 titulo-box">3. Potencialidades e Fragilidades</legend>
+            
+            <div class="bloco-campo">
+                <label for="lista-potencialidades">POTENCIALIDADES (Um item por linha):</label>
+                <textarea id="lista-potencialidades" class="form-control form-control-sm" rows="4" required>Qualidade do corpo docente e técnico.
+Infraestrutura e recursos tecnológicos adequados.
+Alta adesão dos alunos às atividades de extensão.</textarea>
+            </div>
+            
+            <div class="bloco-campo">
+                <label for="lista-fragilidades">FRAGILIDADES (Texto corrido - Ex: se destaca a instabilidade da conexão na internet nas aulas remotas, o que afeta 29% dos alunos):</label>
+                <textarea id="lista-fragilidades" class="form-control form-control-sm" rows="3" required>se destaca a instabilidade da conexão na internet nas aulas remotas, o que afeta 29% dos alunos, e a necessidade de aprimorar a participação de 30% dos alunos no acompanhamento do diário eletrônico.</textarea>
+            </div>
+
+        </fieldset>
+
         <button type="button" class="btn btn-primary mt-3" id="gerarRelatorioBtn">Gerar Relatório Completo</button>
 
         <hr class="my-4">
@@ -75,6 +139,10 @@
         </fieldset>
 
     </main>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
     <script src="script.js"></script> 
 </body>
